@@ -22,3 +22,15 @@ export default Vue.extend({
   }),
 });
 </script>
+
+
+<style scoped>
+  html,
+  body,
+  .v-application,
+  .v-main,
+  .container {
+    height: 100vh;
+    text-align: center;
+  }
+</style>
