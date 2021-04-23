@@ -22,26 +22,27 @@
 
 
 <script lang="ts">
-    import Vue from 'vue'
-    import Intro from './Intro.vue'
-    import ExempleCode from './ExempleCode.vue'
+import Vue from 'vue'
+import Intro from './Intro.vue'
+import ExempleCode from './ExempleCode.vue'
 
-    export default Vue.extend({
-        data: () => ({
-                loadingCompiling: false,
-                choiceCode: null,
-            }
-        ),
-        components: {
-            Intro,
-            ExempleCode,
-        },
-        methods: {
-            changeChoiceCode(choice: string) {
-                console.log(choice)
-            }
+export default Vue.extend({
+    data: () => (
+        {
+            loadingCompiling: false,
+            choiceCode: null,
         }
-    })
+    ),
+    components: {
+        Intro,
+        ExempleCode,
+    },
+    methods: {
+        changeChoiceCode(choice: string) {
+            console.log(choice)
+        }
+    }
+})
 </script>
 
 

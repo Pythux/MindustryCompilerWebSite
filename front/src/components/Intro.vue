@@ -18,11 +18,11 @@ function setupTypewriter(t) {
     t.innerHTML = "";
 
     var cursorPosition = 0,
-    tag = "",
-    writingTag = false,
-    tagOpen = false,
-    typeSpeed = 10,
-    tempTypeSpeed = 0;
+        tag = "",
+        writingTag = false,
+        tagOpen = false,
+        typeSpeed = 10,
+        tempTypeSpeed = 0;
 
     var type = function () {
         if (writingTag === true) {
