@@ -10,10 +10,21 @@
           label="type code here"
         ></v-textarea> -->
     </div>
-    <div class="compileZone d-flex">
-      <textarea id="to-asm" name="to-asm"></textarea>
-    </div>
-    <div class="compileBottom">
+    <div class="complieBtn">
+        <div class="codeBottom">
+          <div>
+            vanilla
+          </div>
+          <div>
+            with reference
+          </div>
+          <div>
+            if condition
+          </div>
+          <div>
+            and much more
+          </div>
+        </div>
       <v-btn
           color="cyan"
           dark
@@ -22,19 +33,8 @@
           :loading="loadingCompiling"
         >Compile</v-btn>
     </div>
-    <div class="codeBottom">
-        <div>
-          vanilla
-        </div>
-        <div>
-          with reference
-        </div>
-        <div>
-          if condition
-        </div>
-        <div>
-          and much more
-        </div>
+    <div class="compileZone">
+      <textarea id="to-asm" name="to-asm"></textarea>
     </div>
   </v-container>
 </template>
@@ -69,12 +69,10 @@
     display: grid;
     grid-template-areas:
       "title title title"
-      "codeZone codeZone compileZone"
-      "codeZone codeZone compileZone"
-      "codeZone codeZone compileZone"
-      "codeZone codeZone compileZone"
-      "codeZone codeZone compileZone"
-      "codeBottom codeBottom compileBottom";
+      "codeZone complieBtn compileZone"
+      "codeZone complieBtn compileZone"
+      "codeZone complieBtn compileZone"
+      "codeZone complieBtn compileZone"
   }
 
   textarea {
@@ -97,23 +95,15 @@
     display: flex;
     flex-direction: column;
   }
-  /* .v-textarea {
-    flex-grow: 1;
-  } */
+
+  .complieBtn {
+    grid-area: complieBtn;
+    background-color: rgb(147, 242, 255);
+  }
 
   .compileZone {
     grid-area: compileZone;
     background-color: gray;
-  }
-
-  .codeBottom {
-    grid-area: codeBottom;
-    background-color: tomato;
-  }
-
-  .compileBottom {
-    grid-area: compileBottom;
-    background-color: yellow;
   }
 
 </style>
