@@ -67,17 +67,22 @@
 
   .container {
     display: grid;
-    grid-template-areas:
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    grid-auto-columns: minmax(100px, auto);
+    /* grid-template-areas:
       "title title title"
       "codeZone complieBtn compileZone"
       "codeZone complieBtn compileZone"
       "codeZone complieBtn compileZone"
-      "codeZone complieBtn compileZone"
+      "codeZone complieBtn compileZone" */
   }
 
   textarea {
     resize: none !important;
     /* height: 100%; */
+    height: 80vh;
     flex-grow: 1;
     /* width: 100%; */
     padding: 20px;
@@ -85,24 +90,34 @@
   }
 
   .title {
-    grid-area: title;
+    /* grid-area: title; */
+    grid-row: 1;
+    grid-column: 1 / 4;
     background-color: red;
+    /* max-height: 150px; */
   }
 
   .codeZone {
-    grid-area: codeZone;
+    /* grid-area: codeZone; */
+    grid-row: 2;
+    grid-column: 1;
+
     background-color: teal;
     display: flex;
     flex-direction: column;
   }
 
   .complieBtn {
-    grid-area: complieBtn;
+    /* grid-area: complieBtn; */
+    grid-row: 2;
+    grid-column: 2;
     background-color: rgb(147, 242, 255);
   }
 
   .compileZone {
-    grid-area: compileZone;
+    /* grid-area: compileZone; */
+    grid-row: 2;
+    grid-column: 3;
     background-color: gray;
   }
 
