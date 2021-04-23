@@ -2,21 +2,16 @@
   <v-container>
     <div class="title">Code with ease</div>
     <div class="codeZone">
-      <v-textarea
+      <textarea id="from-source" name="from-source"></textarea>
+      <!-- <v-textarea
           solo
-          :height="textAreaHeight"
+          no-resize
           name="code"
           label="type code here"
-        ></v-textarea>
+        ></v-textarea> -->
     </div>
-    <div class="compileZone">
-      <v-textarea
-          solo
-          :height="textAreaHeight"
-          name="compiled"
-          label='the compiled code will appear here'
-          readonly
-        ></v-textarea>
+    <div class="compileZone d-flex">
+      <textarea id="to-asm" name="to-asm"></textarea>
     </div>
     <div class="compileBottom">
       <v-btn
@@ -53,55 +48,72 @@
 
     data: () => ({
         loadingCompiling: false,
-        textAreaHeight: 10,
       }
     ),
-    // mounted() {
-    //   this.textAreaHeight = window.innerHeight * 0.80
-    // },
   })
 </script>
 
 
 <style>
-    html,
-    body,
-    .container {
-      height: 100vh;
-      text-align: center;
-    }
 
-    .container {
-      display: grid;
-      grid-template-areas:
-        "title title title"
-        "codeZone codeZone compileZone"
-        "codeBottom codeBottom compileBottom";
-    }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    height: 100%;
+  }
 
-    .title {
-      grid-area: title;
-      background-color: red;
-    }
+  .container {
+    display: grid;
+    grid-template-areas:
+      "title title title"
+      "codeZone codeZone compileZone"
+      "codeZone codeZone compileZone"
+      "codeZone codeZone compileZone"
+      "codeZone codeZone compileZone"
+      "codeZone codeZone compileZone"
+      "codeBottom codeBottom compileBottom";
+  }
 
-    .codeZone {
-      grid-area: codeZone;
-      background-color: teal;
-    }
+  textarea {
+    resize: none !important;
+    /* height: 100%; */
+    flex-grow: 1;
+    /* width: 100%; */
+    padding: 20px;
+    margin: 10px;
+  }
 
-    .compileZone {
-      grid-area: compileZone;
-      background-color: gray;
-    }
+  .title {
+    grid-area: title;
+    background-color: red;
+  }
 
-    .codeBottom {
-      grid-area: codeBottom;
-      background-color: tomato;
-    }
+  .codeZone {
+    grid-area: codeZone;
+    background-color: teal;
+    display: flex;
+    flex-direction: column;
+  }
+  /* .v-textarea {
+    flex-grow: 1;
+  } */
 
-    .compileBottom {
-      grid-area: compileBottom;
-      background-color: yellow;
-    }
+  .compileZone {
+    grid-area: compileZone;
+    background-color: gray;
+  }
+
+  .codeBottom {
+    grid-area: codeBottom;
+    background-color: tomato;
+  }
+
+  .compileBottom {
+    grid-area: compileBottom;
+    background-color: yellow;
+  }
 
 </style>

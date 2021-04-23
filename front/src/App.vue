@@ -25,12 +25,10 @@ export default Vue.extend({
 
 
 <style scoped>
-  html,
+  /* html,
   body,
   .v-application,
-  .v-main,
-  .container {
+  .v-main {
     height: 100vh;
-    text-align: center;
-  }
+  } */
 </style>
