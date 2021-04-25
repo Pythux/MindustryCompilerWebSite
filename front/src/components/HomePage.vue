@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <div class="codeZone">
-        <textarea id="from-source" name="from-source" style="background-color: rgb(180, 255, 251);"></textarea>
+        <textarea id="code-source" name="code-source" style="background-color: rgb(180, 255, 251);"></textarea>
         </div>
         <div class="complieBtn d-flex flex-column justify-space-around">
         <Intro />
@@ -15,7 +15,7 @@
         <ExempleCode v-on:choice="changeChoiceCode" />
         </div>
         <div class="compileZone">
-        <textarea id="to-asm" name="to-asm"></textarea>
+        <textarea id="asm" name="asm"></textarea>
         </div>
     </v-container>
 </template>
@@ -40,6 +40,22 @@ export default Vue.extend({
     methods: {
         changeChoiceCode(choice: string) {
             console.log(choice)
+            if (choice == 'if') {
+                fetch(`${choice}.code`, { method: "GET" })
+                .then(response => {
+                    let r = response.text()
+                    r.then(text => {
+                        document.querySelector("#code-source").innerHTML = text
+                    })
+                })
+                fetch(`${choice}.asm`, { method: "GET" })
+                .then(response => {
+                    let r = response.text()
+                    r.then(text => {
+                        document.querySelector("#asm").innerHTML = text
+                    })
+                })
+            }
         }
     }
 })

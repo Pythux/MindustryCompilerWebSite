@@ -35,7 +35,6 @@ export default {
     },
     watch: {
         choice() {
-            console.log(`emit: ${this.choice}`)
             this.$emit('choice', this.choice)
         }
     }
