@@ -11,6 +11,7 @@
                 elevation="2"
                 large
                 :loading="loadingCompiling"
+                @click="compileCode"
             >>> Compile >></v-btn>
             <ExempleCode v-on:choice="changeChoiceCode" />
         </v-col>
@@ -61,6 +62,31 @@ export default Vue.extend({
                 r.then(text => {
                     document.querySelector("#asm").innerHTML = text
                 })
+            })
+        },
+        compileCode() {
+            let location = window.location
+            let domain = location.protocol + '//' + location.hostname
+            let port = 5000
+            let url = `${domain}:${port}/`
+            this.loadingCompiling = true
+            fetch(url + 'api/compile', {
+                method: "POST",
+                body: JSON.stringify({ data: document.querySelector("#code-source").value }),
+                headers: {'Content-Type': 'application/json', },
+            })
+            .then(response => {
+                response.json().then(data => {
+                    document.querySelector("#asm").innerHTML = data.asm
+                    }
+                )
+                // end waiting for an awnser
+                this.loadingCompiling = true
+            })
+            .catch(error => {
+                console.warn(error)
+                // end waiting for an awnser
+                this.loadingCompiling = true
             })
         }
     }
