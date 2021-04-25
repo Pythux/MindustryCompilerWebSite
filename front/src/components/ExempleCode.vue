@@ -1,7 +1,7 @@
 <template>
     <v-btn-toggle
         v-model="choice"
-        color="deep-purple accent-3"
+        color="#94ebcd"
         group
         class="d-flex flex-column"
       >

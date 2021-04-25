@@ -1,23 +1,23 @@
 <template>
-    <v-container>
-        <div class="codeZone">
-        <textarea id="code-source" name="code-source" style="background-color: rgb(180, 255, 251);"></textarea>
-        </div>
-        <div class="complieBtn d-flex flex-column justify-space-around">
-        <Intro />
-        <v-btn
-            color="cyan"
-            dark
-            elevation="2"
-            large
-            :loading="loadingCompiling"
-        >>> Compile >></v-btn>
-        <ExempleCode v-on:choice="changeChoiceCode" />
-        </div>
-        <div class="compileZone">
-        <textarea id="asm" name="asm"></textarea>
-        </div>
-    </v-container>
+    <v-row>
+        <v-col cols="6" class="d-flex">
+            <textarea id="code-source" name="code-source"></textarea>
+        </v-col>
+        <v-col cols="3" class="complieBtn d-flex flex-column justify-space-around">
+            <Intro />
+            <v-btn
+                color="#6ddccf"
+                dark
+                elevation="2"
+                large
+                :loading="loadingCompiling"
+            >>> Compile >></v-btn>
+            <ExempleCode v-on:choice="changeChoiceCode" />
+        </v-col>
+        <v-col cols="3" class="d-flex">
+            <textarea id="asm" name="asm" style="color: rgb(9 51 51);" readonly></textarea>
+        </v-col>
+    </v-row>
 </template>
 
 
@@ -69,47 +69,26 @@ export default Vue.extend({
 
 
 <style>
-.container {
+/* .container {
     height: 100%;
-}
+    max-width: none !important;
+} */
 
-.container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-    grid-auto-rows: minmax(100px, auto);
-    grid-auto-columns: minmax(100px, auto);
+.row {
+    height: 100%;
 }
 
 textarea {
     resize: none !important;
-    height: 80vh;
+    /* height: 100%; */
     flex-grow: 1;
     padding: 20px;
     margin: 10px;
-}
-
-.codeZone {
-    grid-row: 1;
-    grid-column: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.complieBtn {
-    grid-row: 1;
-    grid-column: 2;
-    /* background-color: rgb(147, 242, 255); */
+    width: 100%;
 }
 
 .v-btn__content {
     text-transform: none;
 }
 
-.compileZone {
-    grid-row: 1;
-    grid-column: 3;
-    display: flex;
-    flex-direction: column;
-}
 </style>

@@ -85,10 +85,10 @@ export default {
 
 <style lang="scss" scoped>
 .var-highlight {
-    color: rgb(138, 92, 8);
+    color: #ff8800;
 }
 .string-highlight {
-    color: red;
+    color: #ffcb91;
 }
 
 #presentation-typewriter {
