@@ -38,24 +38,30 @@ export default Vue.extend({
         ExempleCode,
     },
     methods: {
-        changeChoiceCode(choice: string) {
-            console.log(choice)
-            if (choice == 'if') {
-                fetch(`${choice}.code`, { method: "GET" })
-                .then(response => {
-                    let r = response.text()
-                    r.then(text => {
-                        document.querySelector("#code-source").innerHTML = text
-                    })
-                })
-                fetch(`${choice}.asm`, { method: "GET" })
-                .then(response => {
-                    let r = response.text()
-                    r.then(text => {
-                        document.querySelector("#asm").innerHTML = text
-                    })
-                })
+        changeChoiceCode(choice: string | null) {
+            if (choice === null || choice === undefined) {
+                document.querySelector("#code-source").innerHTML = '// code stuff here'
+                document.querySelector("#asm").innerHTML = ''
             }
+            if (choice == 'if') {
+                this.setExemple(choice)
+            }
+        },
+        setExemple(exemple: string) {
+            fetch(`${exemple}.code`, { method: "GET" })
+            .then(response => {
+                let r = response.text()
+                r.then(text => {
+                    document.querySelector("#code-source").innerHTML = text
+                })
+            })
+            fetch(`${exemple}.asm`, { method: "GET" })
+            .then(response => {
+                let r = response.text()
+                r.then(text => {
+                    document.querySelector("#asm").innerHTML = text
+                })
+            })
         }
     }
 })
