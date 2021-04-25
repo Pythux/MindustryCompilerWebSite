@@ -5,14 +5,14 @@
         group
         class="d-flex flex-column"
       >
-        <v-btn value="jumpRef">
+        <v-btn value="jump">
           Jump Ref
         </v-btn>
         <v-btn value="if">
           If
         </v-btn>
 
-        <v-btn value="fun">
+        <v-btn value="function">
           Function
         </v-btn>
 
@@ -20,7 +20,7 @@
           Module
         </v-btn>
 
-        <v-btn value="for">
+        <v-btn value="forLoop">
           For loop
         </v-btn>
       </v-btn-toggle>

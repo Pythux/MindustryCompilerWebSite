@@ -15,7 +15,7 @@
             <ExempleCode v-on:choice="changeChoiceCode" />
         </v-col>
         <v-col cols="3" class="d-flex">
-            <textarea id="asm" name="asm" style="color: rgb(9 51 51);" readonly></textarea>
+            <textarea id="asm" name="asm" readonly></textarea>
         </v-col>
     </v-row>
 </template>
@@ -43,19 +43,19 @@ export default Vue.extend({
                 document.querySelector("#code-source").innerHTML = '// code stuff here'
                 document.querySelector("#asm").innerHTML = ''
             }
-            if (choice == 'if') {
+            else {
                 this.setExemple(choice)
             }
         },
         setExemple(exemple: string) {
-            fetch(`${exemple}.code`, { method: "GET" })
+            fetch(`exemples/${exemple}.code`, { method: "GET" })
             .then(response => {
                 let r = response.text()
                 r.then(text => {
                     document.querySelector("#code-source").innerHTML = text
                 })
             })
-            fetch(`${exemple}.asm`, { method: "GET" })
+            fetch(`exemples/${exemple}.asm`, { method: "GET" })
             .then(response => {
                 let r = response.text()
                 r.then(text => {
