@@ -11,11 +11,11 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 @app.route("/api/compile", methods=['POST'])
 def compile():
     if request.method == 'POST':
+        d = request.json
         if 'data' not in d:
             return Response("data to compile not found in body", status=400)
-        d = request.json
         toCompile = d['data']
-        return flask.jsonify('done')
+        return flask.jsonify({'asm': 'yolo'})
 
 
 if __name__ == "__main__":

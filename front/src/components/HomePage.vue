@@ -64,30 +64,33 @@ export default Vue.extend({
                 })
             })
         },
-        compileCode() {
-            let location = window.location
-            let domain = location.protocol + '//' + location.hostname
-            let port = 5000
-            let url = `${domain}:${port}/`
+        async compileCode() {
             this.loadingCompiling = true
-            fetch(url + 'api/compile', {
+            try {
+                let data = await this.getCompileCode()
+                document.querySelector("#asm").innerHTML = data.asm
+            } catch (error) {
+                console.warn("fail to request API")
+            } finally {
+                // end waiting for an awnser
+                this.loadingCompiling = false
+            }
+        },
+        async getCompileCode() {
+            function serverUrl() {
+                let location = window.location
+                let domain = location.protocol + '//' + location.hostname
+                let port = 5000
+                let url = `${domain}:${port}/`
+                return url
+            }
+
+            return fetch(serverUrl() + 'api/compile', {
                 method: "POST",
                 body: JSON.stringify({ data: document.querySelector("#code-source").value }),
                 headers: {'Content-Type': 'application/json', },
             })
-            .then(response => {
-                response.json().then(data => {
-                    document.querySelector("#asm").innerHTML = data.asm
-                    }
-                )
-                // end waiting for an awnser
-                this.loadingCompiling = true
-            })
-            .catch(error => {
-                console.warn(error)
-                // end waiting for an awnser
-                this.loadingCompiling = true
-            })
+            .then(response => response.json())
         }
     }
 })
