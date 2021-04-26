@@ -2,6 +2,10 @@ import flask
 from flask import Flask, request, Response
 from flask_cors import CORS
 
+# import compiler here:
+from compiler import CompilationException
+from compiler.yacc.mainYacc import runYacc
+
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -15,7 +19,11 @@ def compile():
         if 'data' not in d:
             return Response("data to compile not found in body", status=400)
         toCompile = d['data']
-        return flask.jsonify({'asm': 'yolo'})
+        try:
+            compiled = runYacc(toCompile, clearContext=True)
+            return flask.jsonify({'asm': compiled})
+        except CompilationException as e:
+            return flask.jsonify({'error': str(e)})
 
 
 if __name__ == "__main__":

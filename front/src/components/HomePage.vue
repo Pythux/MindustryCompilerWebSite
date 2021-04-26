@@ -1,9 +1,17 @@
 <template>
     <v-row>
-        <v-col cols="6" class="d-flex">
+        <v-col cols="12" md="5" class="d-flex">
             <textarea id="code-source" name="code-source"></textarea>
         </v-col>
-        <v-col cols="3" class="complieBtn d-flex flex-column justify-space-around">
+        <v-col cols="12" md="4" class="complieBtn d-flex flex-column justify-space-around">
+            <v-alert
+                v-model="alertVisible"
+                border="left"
+                colored-border
+                dismissible
+                elevation="6"
+                type="error"
+            >{{compilError}}</v-alert>
             <Intro />
             <v-btn
                 color="#6ddccf"
@@ -15,7 +23,7 @@
             >>> Compile >></v-btn>
             <ExempleCode v-on:choice="changeChoiceCode" />
         </v-col>
-        <v-col cols="3" class="d-flex">
+        <v-col cols="12" md="3" class="d-flex">
             <textarea id="asm" name="asm" readonly></textarea>
         </v-col>
     </v-row>
@@ -32,6 +40,8 @@ export default Vue.extend({
         {
             loadingCompiling: false,
             choiceCode: null,
+            alertVisible: false,
+            compilError: null,
         }
     ),
     components: {
@@ -70,13 +80,24 @@ export default Vue.extend({
             try {
                 let response = await this.post(`${url}/api/compile`, { data: document.querySelector("#code-source").value })
                 let data = await response.json()
-                document.querySelector("#asm").innerHTML = data.asm
+                this.handleCompileResponce(data)
+
             } catch (error) {
                 console.warn("fail to request API")
                 console.log(error)
             } finally {
                 // end waiting for an awnser
                 this.loadingCompiling = false
+            }
+        },
+        handleCompileResponce(data) {
+            if ('asm' in data) {
+                document.querySelector("#asm").innerHTML = data.asm
+            } else if ('error' in data) {
+                this.compilError = data.error
+                this.alertVisible = true
+            } else {
+                console.warn('bad data recv')
             }
         },
         serverUrl() {
