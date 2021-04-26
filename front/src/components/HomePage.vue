@@ -50,9 +50,10 @@ export default Vue.extend({
     },
     methods: {
         changeChoiceCode(choice: string | null) {
+            this.alertVisible = false
             if (choice === null || choice === undefined) {
-                document.querySelector("#code-source").innerHTML = '// code stuff here'
-                document.querySelector("#asm").innerHTML = ''
+                document.querySelector("#code-source").value = '// code stuff here'
+                document.querySelector("#asm").value = ''
             }
             else {
                 this.setExemple(choice)
@@ -63,18 +64,19 @@ export default Vue.extend({
             .then(response => {
                 let r = response.text()
                 r.then(text => {
-                    document.querySelector("#code-source").innerHTML = text
+                    document.querySelector("#code-source").value = text
                 })
             })
             fetch(`exemples/${exemple}.asm`, { method: "GET" })
             .then(response => {
                 let r = response.text()
                 r.then(text => {
-                    document.querySelector("#asm").innerHTML = text
+                    document.querySelector("#asm").value = text
                 })
             })
         },
         async compileCode() {
+            this.alertVisible = false
             this.loadingCompiling = true
             let url = this.serverUrl()
             try {
@@ -92,7 +94,7 @@ export default Vue.extend({
         },
         handleCompileResponce(data) {
             if ('asm' in data) {
-                document.querySelector("#asm").innerHTML = data.asm
+                document.querySelector("#asm").value = data.asm
             } else if ('error' in data) {
                 this.compilError = data.error
                 this.alertVisible = true
