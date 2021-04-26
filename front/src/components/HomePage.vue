@@ -3,7 +3,7 @@
         <v-col cols="6" md="5" class="d-flex">
             <textarea id="code-source" name="code-source"></textarea>
         </v-col>
-        <v-col cols="12" md="4" class="complieBtn d-flex flex-column justify-space-around">
+        <v-col cols="12" md="4" class="complieBtn d-flex flex-column justify-space-around align-center">
             <v-alert
                 v-model="alertVisible"
                 border="left"
@@ -147,7 +147,6 @@ textarea {
 @media only screen and (max-width: 960px) {
   .complieBtn {
       order: -1;  /* put this first in list */
-      background-color: aqua;
   }
 }
 
