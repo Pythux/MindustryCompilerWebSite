@@ -1,6 +1,6 @@
 <template>
     <v-row>
-        <v-col cols="12" md="5" class="d-flex">
+        <v-col cols="6" md="5" class="d-flex">
             <textarea id="code-source" name="code-source"></textarea>
         </v-col>
         <v-col cols="12" md="4" class="complieBtn d-flex flex-column justify-space-around">
@@ -23,7 +23,7 @@
             >>> Compile >></v-btn>
             <ExempleCode v-on:choice="changeChoiceCode" />
         </v-col>
-        <v-col cols="12" md="3" class="d-flex">
+        <v-col cols="6" md="3" class="d-flex">
             <textarea id="asm" name="asm" readonly></textarea>
         </v-col>
     </v-row>
@@ -136,10 +136,20 @@ textarea {
     padding: 20px;
     margin: 10px;
     width: 100%;
+    min-height: 250px;
 }
 
 .v-btn__content {
     text-transform: none;
 }
+
+
+@media only screen and (max-width: 960px) {
+  .complieBtn {
+      order: -1;  /* put this first in list */
+      background-color: aqua;
+  }
+}
+
 
 </style>
