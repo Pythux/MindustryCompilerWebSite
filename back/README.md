@@ -8,14 +8,14 @@ heroku login
 heroku container:login
 ```
 
-## push first version
+## push the image
 
 ```sh
 heroku container:push web --app mindustry-compiler
 ```
 
-## new version
+## run the pushed image
 
 ```sh
-heroku container:release web
+heroku container:release web --app mindustry-compiler
 ```
