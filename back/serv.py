@@ -26,5 +26,10 @@ def compile():
             return flask.jsonify({'error': str(e)})
 
 
+# for gunicorn standard entry-point
+application = app
+__all__ = [application]
+
+
 if __name__ == "__main__":
     app.run()
