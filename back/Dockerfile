@@ -22,3 +22,8 @@ USER pythux
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku
 CMD gunicorn --bind 0.0.0.0:$PORT serv
+
+# to create the docker image, in this directory:
+# docker image build --tag mindustry-compiler .
+# to set PORT locally:
+# docker container run --name mindCompiler -e PORT='5000' --rm -p 5000:5000 mindustry-compiler
