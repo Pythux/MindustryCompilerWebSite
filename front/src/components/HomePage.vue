@@ -103,6 +103,7 @@ export default Vue.extend({
             }
         },
         serverUrl() {
+            console.log(process.env.VUE_APP_BACK)
             let location = window.location
             let domain = location.protocol + '//' + location.hostname
             let port = 5000
