@@ -78,7 +78,7 @@ export default Vue.extend({
         async compileCode() {
             this.alertVisible = false
             this.loadingCompiling = true
-            let url = this.serverUrl()
+            let url = process.env.VUE_APP_BACK
             try {
                 let response = await this.post(`${url}/api/compile`, { data: document.querySelector("#code-source").value })
                 let data = await response.json()
@@ -101,14 +101,6 @@ export default Vue.extend({
             } else {
                 console.warn('bad data recv')
             }
-        },
-        serverUrl() {
-            console.log(process.env.VUE_APP_BACK)
-            let location = window.location
-            let domain = location.protocol + '//' + location.hostname
-            let port = 5000
-            let url = `${domain}:${port}`
-            return url
         },
         post(url, content) {
             return fetch(url, {
