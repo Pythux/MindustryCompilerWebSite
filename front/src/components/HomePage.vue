@@ -1,12 +1,13 @@
 <template>
-    <v-row>
-        <v-col cols="6" md="5" class="d-flex">
+    <v-row id="rowContent">
+        <v-col id="codeDiv" cols="6" md="5" class="d-flex">
             <textarea id="code-source" name="code-source"></textarea>
         </v-col>
-        <v-col cols="12" md="4" class="complieBtn d-flex flex-column justify-space-around align-center">
+        <v-col cols="12" md="4" class="complieBtn d-flex flex-column justify-center align-center">
             <Intro id="intro" />
             <ExempleCode v-on:choice="changeChoiceCode" class="codeMenu" />
             <v-btn
+                class="mt-10"
                 color="#6ddccf"
                 dark
                 elevation="2"
@@ -23,7 +24,7 @@
                 type="error"
             >{{compilError}}</v-alert>
         </v-col>
-        <v-col cols="6" md="3" class="d-flex">
+        <v-col id="asmDiv" cols="6" md="3" class="d-flex">
             <textarea id="asm" name="asm" readonly></textarea>
         </v-col>
     </v-row>
@@ -155,6 +156,18 @@ textarea {
     }
     #intro {
         display: none;
+    }
+    textarea {
+        margin: 2px;
+    }
+    #codeDiv {
+        padding: 4px;
+    }
+    #asmDiv {
+        padding: 4px;
+    }
+    #rowContent {
+        margin: 0px;
     }
 }
 

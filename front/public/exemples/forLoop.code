@@ -1,12 +1,11 @@
 
-// will print "1 2 3 ", "2 3 4 ", "3 4 5 ", ...
-import time
+// will print "1 2 "
+// "2 3 ", ...
 
-list = [a, b, c]
+list = [a, b]
 
-set a 1
-set b 2
-set c 3
+for el in list
+    set el 1
 
 #ref loop
 for x in list
@@ -14,7 +13,5 @@ for x in list
     print x
     print " "
 
-
-time.wait(1)
 printflush message1
 jump loop
