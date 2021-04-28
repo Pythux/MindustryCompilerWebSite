@@ -4,7 +4,8 @@
             <textarea id="code-source" name="code-source"></textarea>
         </v-col>
         <v-col cols="12" md="4" class="complieBtn d-flex flex-column justify-space-around align-center">
-            <Intro />
+            <Intro id="intro" />
+            <ExempleCode v-on:choice="changeChoiceCode" class="codeMenu" />
             <v-btn
                 color="#6ddccf"
                 dark
@@ -21,7 +22,6 @@
                 elevation="6"
                 type="error"
             >{{compilError}}</v-alert>
-            <ExempleCode v-on:choice="changeChoiceCode" class="codeMenu" />
         </v-col>
         <v-col cols="6" md="3" class="d-flex">
             <textarea id="asm" name="asm" readonly></textarea>
@@ -152,6 +152,9 @@ textarea {
     .codeMenu {
         flex-direction: row;
         flex-wrap: wrap;
+    }
+    #intro {
+        display: none;
     }
 }
 
