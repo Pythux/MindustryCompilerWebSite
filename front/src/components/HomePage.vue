@@ -161,9 +161,9 @@ textarea {
         flex-direction: row;
         flex-wrap: wrap;
     }
-    #intro {
+    /* #intro {
         display: none;
-    }
+    } */
     .gridContent {
         display: grid;
         grid-template-rows: auto 1fr;  /* key rule */

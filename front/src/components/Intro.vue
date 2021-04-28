@@ -77,8 +77,12 @@ function setupTypewriter(t) {
 export default {
     mounted() {
         let typer = document.querySelector("#presentation-typewriter")
+        console.log(typer)
+        // let width = typer.clientWidth
+        // let height = typer.clientHeight
         let typewriter = setupTypewriter(typer)
         typewriter.type()
+        // typer.setAttribute('style', `width: ${width}px; height: ${height}px;`)
     },
 }
 </script>
