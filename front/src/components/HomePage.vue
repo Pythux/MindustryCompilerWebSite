@@ -1,13 +1,14 @@
 <template>
-    <v-row id="rowContent">
-        <v-col id="codeDiv" cols="6" md="5" class="d-flex">
+    <div class="gridContent">
+        <div id="codeDiv">
             <textarea id="code-source" name="code-source"></textarea>
-        </v-col>
-        <v-col cols="12" md="4" class="complieBtn d-flex flex-column justify-center align-center">
+        </div>
+        <div class="menuDiv d-flex flex-column justify-center align-center">
             <Intro id="intro" />
-            <ExempleCode v-on:choice="changeChoiceCode" class="codeMenu" />
+            <ExempleCode v-on:choice="changeChoiceCode" class="exempleCode" />
             <v-btn
-                class="mt-10"
+                id="compileButton"
+                class="mt-10 mb-6"
                 color="#6ddccf"
                 dark
                 elevation="2"
@@ -23,11 +24,11 @@
                 elevation="6"
                 type="error"
             >{{compilError}}</v-alert>
-        </v-col>
-        <v-col id="asmDiv" cols="6" md="3" class="d-flex">
+        </div>
+        <div id="asmDiv" class="d-flex">
             <textarea id="asm" name="asm" readonly></textarea>
-        </v-col>
-    </v-row>
+        </div>
+    </div>
 </template>
 
 
@@ -121,14 +122,30 @@ export default Vue.extend({
     max-width: none !important;
 } */
 
-.row {
+
+.codeDiv {
+    grid-area: codeDiv;
+}
+.menuDiv {
+    grid-area: menuDiv;
+}
+.asmDiv {
+    grid-area: asmDiv;
+}
+
+.gridContent {
     height: 100%;
+    display: grid;
+    grid-template-rows: 1fr;  /* key rule */
+    grid-template-columns: 1fr auto 1fr;
+    /* height: 100vh; */
+    grid-template-areas: "codeDiv menuDiv asmDiv";
 }
 
 textarea {
     resize: none !important;
     /* height: 100%; */
-    flex-grow: 1;
+    /* flex-grow: 1; */
     padding: 20px;
     margin: 10px;
     width: 100%;
@@ -141,33 +158,43 @@ textarea {
     text-transform: none;
 }
 
-.codeMenu {
+.exempleCode {
     flex-direction: column;
 }
 
 
 @media only screen and (max-width: 960px) {
-    .complieBtn {
-        order: -1;  /* put this first in list */
-    }
-    .codeMenu {
+    .exempleCode {
         flex-direction: row;
         flex-wrap: wrap;
     }
     #intro {
         display: none;
     }
+    .gridContent {
+        display: grid;
+        grid-template-rows: auto 1fr;  /* key rule */
+        grid-template-columns: 1fr 1fr;
+        /* height: 100vh; */
+        grid-template-areas: "menuDiv menuDiv"
+                              "codeDiv asmDiv";
+    }
     textarea {
         margin: 2px;
+        padding: 4px;
+        line-height: 1;
     }
     #codeDiv {
-        padding: 4px;
+        padding: 3px;
     }
     #asmDiv {
-        padding: 4px;
+        padding: 3px;
     }
     #rowContent {
         margin: 0px;
+    }
+    .exempleCode button {
+        height: 28px !important;
     }
 }
 
