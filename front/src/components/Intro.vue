@@ -1,5 +1,5 @@
 <template>
-    <pre id="presentation-typewriter">
+    <pre class="presentation-typewriter">
         <span class="var-highlight">const</span> source = {
             name: <span class="string-highlight">'Master of bots'</span>,
             type: <span class="string-highlight">'Mindustry compiler'</span>,
@@ -76,13 +76,12 @@ function setupTypewriter(t) {
 
 export default {
     mounted() {
-        let typer = document.querySelector("#presentation-typewriter")
-        console.log(typer)
-        // let width = typer.clientWidth
-        // let height = typer.clientHeight
+        let typer = document.querySelector(".presentation-typewriter")
+        let width = typer.clientWidth
+        let height = typer.clientHeight
         let typewriter = setupTypewriter(typer)
         typewriter.type()
-        // typer.setAttribute('style', `width: ${width}px; height: ${height}px;`)
+        typer.setAttribute('style', `width: ${width}px; height: ${height}px;`)
     },
 }
 </script>
