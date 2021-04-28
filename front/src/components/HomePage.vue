@@ -118,11 +118,6 @@ export default Vue.extend({
 
 
 <style>
-/* .container {
-    height: 100%;
-    max-width: none !important;
-} */
-
 
 .codeDiv {
     grid-area: codeDiv;
@@ -139,20 +134,17 @@ export default Vue.extend({
     display: grid;
     grid-template-rows: 1fr;  /* key rule */
     grid-template-columns: 1fr auto 1fr;
-    /* height: 100vh; */
     grid-template-areas: "codeDiv menuDiv asmDiv";
 }
 
 textarea {
     resize: none !important;
-    /* height: 100%; */
-    /* flex-grow: 1; */
     padding: 20px;
     margin: 10px;
     width: 100%;
-    min-height: 250px;
     border: 2px solid #ffeabd;
     border-radius: 8px;
+    height: calc(100% - 20px);
 }
 
 .v-btn__content {
@@ -176,7 +168,6 @@ textarea {
         display: grid;
         grid-template-rows: auto 1fr;  /* key rule */
         grid-template-columns: 1fr 1fr;
-        /* height: 100vh; */
         grid-template-areas: "menuDiv menuDiv"
                               "codeDiv asmDiv";
     }
@@ -184,15 +175,13 @@ textarea {
         margin: 2px;
         padding: 4px;
         line-height: 1;
+        height: calc(100% - 4px);
     }
     #codeDiv {
         padding: 3px;
     }
     #asmDiv {
         padding: 3px;
-    }
-    #rowContent {
-        margin: 0px;
     }
     .exempleCode button {
         height: 28px !important;
