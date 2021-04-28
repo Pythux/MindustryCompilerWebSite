@@ -4,14 +4,6 @@
             <textarea id="code-source" name="code-source"></textarea>
         </v-col>
         <v-col cols="12" md="4" class="complieBtn d-flex flex-column justify-space-around align-center">
-            <v-alert
-                v-model="alertVisible"
-                border="left"
-                colored-border
-                dismissible
-                elevation="6"
-                type="error"
-            >{{compilError}}</v-alert>
             <Intro />
             <v-btn
                 color="#6ddccf"
@@ -21,6 +13,14 @@
                 :loading="loadingCompiling"
                 @click="compileCode"
             >>> Compile >></v-btn>
+            <v-alert
+                v-model="alertVisible"
+                border="left"
+                colored-border
+                dismissible
+                elevation="6"
+                type="error"
+            >{{compilError}}</v-alert>
             <ExempleCode v-on:choice="changeChoiceCode" class="codeMenu" />
         </v-col>
         <v-col cols="6" md="3" class="d-flex">
