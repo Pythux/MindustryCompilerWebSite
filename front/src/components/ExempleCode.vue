@@ -3,7 +3,7 @@
         v-model="choice"
         color="#94ebcd"
         group
-        class="d-flex flex-column"
+        class="d-flex"
       >
         <v-btn value="jump">
           Jump Ref

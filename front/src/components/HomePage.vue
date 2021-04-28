@@ -21,7 +21,7 @@
                 :loading="loadingCompiling"
                 @click="compileCode"
             >>> Compile >></v-btn>
-            <ExempleCode v-on:choice="changeChoiceCode" />
+            <ExempleCode v-on:choice="changeChoiceCode" class="codeMenu" />
         </v-col>
         <v-col cols="6" md="3" class="d-flex">
             <textarea id="asm" name="asm" readonly></textarea>
@@ -138,11 +138,19 @@ textarea {
     text-transform: none;
 }
 
+.codeMenu {
+    flex-direction: column;
+}
+
 
 @media only screen and (max-width: 960px) {
-  .complieBtn {
-      order: -1;  /* put this first in list */
-  }
+    .complieBtn {
+        order: -1;  /* put this first in list */
+    }
+    .codeMenu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 }
 
 
