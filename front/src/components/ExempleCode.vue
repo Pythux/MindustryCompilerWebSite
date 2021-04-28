@@ -23,9 +23,6 @@
         <v-btn value="forLoop">
           For loop
         </v-btn>
-        <v-btn value="botForLoop">
-          For loop for bots owning
-        </v-btn>
       </v-btn-toggle>
 </template>
 
