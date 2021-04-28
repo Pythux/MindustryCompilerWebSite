@@ -98,6 +98,7 @@ export default Vue.extend({
             if ('asm' in data) {
                 document.querySelector("#asm").value = data.asm
             } else if ('error' in data) {
+                document.querySelector("#asm").value = ''
                 this.compilError = data.error
                 this.alertVisible = true
             } else {
