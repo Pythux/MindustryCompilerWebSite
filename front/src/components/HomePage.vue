@@ -132,6 +132,8 @@ textarea {
     margin: 10px;
     width: 100%;
     min-height: 250px;
+    border: 2px solid #ffeabd;
+    border-radius: 8px;
 }
 
 .v-btn__content {
