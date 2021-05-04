@@ -2,4 +2,4 @@
 gunicorn
 Flask
 flask-cors
-MindustryCompiler==1.9
+MindustryCompiler==2.0
