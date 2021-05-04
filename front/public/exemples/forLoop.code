@@ -1,7 +1,4 @@
 
-// will print "1 2 "
-// "2 3 ", ...
-
 list = [a, b]
 
 for el in list
@@ -11,7 +8,6 @@ for el in list
 for x in list
     op add x x 1
     print x
-    print " "
 
-printflush message1
+printflush message
 jump loop
